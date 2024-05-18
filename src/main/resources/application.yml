@@ -1,6 +1,14 @@
 spring:
   application:
     name: service-template
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    jpa:
+      database: postgresql
+      database-platform: org.hibernate.dialect.PostgreSQL10Dialect
 grpc:
   server:
     port: 9090

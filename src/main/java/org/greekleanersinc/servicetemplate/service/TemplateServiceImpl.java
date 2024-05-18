@@ -8,10 +8,16 @@ import org.greekleanersinc.servicetemplate.Request;
 import org.greekleanersinc.servicetemplate.Response;
 import org.greekleanersinc.servicetemplate.TemplateServiceGrpc;
 import org.greekleanersinc.servicetemplate.model.TemplateData;
+import org.greekleanersinc.servicetemplate.repository.TemplateRepository;
 
 @GrpcService
 @Slf4j
 public class TemplateServiceImpl extends TemplateServiceGrpc.TemplateServiceImplBase {
+    private final TemplateRepository templateRepository;
+
+    public TemplateServiceImpl(TemplateRepository templateRepository) {
+        this.templateRepository = templateRepository;
+    }
 
     @Override
     public void findTemplate(Request request,
@@ -19,10 +25,10 @@ public class TemplateServiceImpl extends TemplateServiceGrpc.TemplateServiceImpl
         Long id = request.getId();
         log.info("Finding template by id: {}", id);
 
-        //var template = templateRepository.findById(id);
+        var template = templateRepository.findById(id);
         Response response = Response
                 .newBuilder()
-                .setResponseData(convertToProto(new TemplateData()))
+                .setResponseData(convertToProto(template))
                 .build();
         responseObserver.onNext(response);
         responseObserver.onCompleted();
