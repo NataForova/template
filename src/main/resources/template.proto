@@ -1,0 +1,20 @@
+syntax = "proto3";
+option java_multiple_files = true;
+
+package org.greekleanersinc.servicetemplate;
+
+message TemplateRequest {
+  string id = 1;
+}
+message TemplateData {
+  string id = 1;
+  string name = 2;
+}
+
+message TemplateResponse {
+  TemplateData template = 1;
+}
+
+service TemplateService {
+  rpc findTemplate(TemplateRequest) returns (TemplateResponse);
+}
