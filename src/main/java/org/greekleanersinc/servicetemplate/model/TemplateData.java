@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Template {
+public class TemplateData {
     private Long id;
 
-    private String name;
+    private String text;
 }

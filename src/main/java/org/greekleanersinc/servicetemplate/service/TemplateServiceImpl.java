@@ -1,42 +1,44 @@
 package org.greekleanersinc.servicetemplate.service;
 
 import io.grpc.stub.StreamObserver;
+import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.server.service.GrpcService;
-import org.greekleanersinc.servicetemplate.TemplateData;
-import org.greekleanersinc.servicetemplate.TemplateRequest;
-import org.greekleanersinc.servicetemplate.TemplateResponse;
+import org.greekleanersinc.servicetemplate.ServiceData;
+import org.greekleanersinc.servicetemplate.Request;
+import org.greekleanersinc.servicetemplate.Response;
 import org.greekleanersinc.servicetemplate.TemplateServiceGrpc;
-import org.greekleanersinc.servicetemplate.model.Template;
+import org.greekleanersinc.servicetemplate.model.TemplateData;
 
 @GrpcService
+@Slf4j
 public class TemplateServiceImpl extends TemplateServiceGrpc.TemplateServiceImplBase {
 
     @Override
-    public void findTemplate(TemplateRequest request,
-                             StreamObserver<TemplateResponse> responseObserver) {
-        Long id = Long.getLong(request.getId());
-        //log.info("Finding template by id: {}", id);
+    public void findTemplate(Request request,
+                             StreamObserver<Response> responseObserver) {
+        Long id = request.getId();
+        log.info("Finding template by id: {}", id);
 
         //var template = templateRepository.findById(id);
-        TemplateResponse templateResponse = TemplateResponse
+        Response response = Response
                 .newBuilder()
-                .setTemplate(convertToProto(new Template()))
+                .setResponseData(convertToProto(new TemplateData()))
                 .build();
-        responseObserver.onNext(templateResponse);
+        responseObserver.onNext(response);
         responseObserver.onCompleted();
     }
 
-    public static TemplateData convertToProto(Template template) {
-        return TemplateData.newBuilder()
-                .setId("1")
-                .setName("test")
+    public static ServiceData convertToProto(TemplateData template) {
+        return ServiceData.newBuilder()
+                .setId(template.getId())
+                .setText(template.getText())
                 .build();
     }
 
-    public static Template convertToPojo(TemplateData templateData) {
-        return new Template(
-                Long.getLong(templateData.getId()),
-                templateData.getName()
+    public static TemplateData convertToPojo(TemplateData templateData) {
+        return new TemplateData(
+                templateData.getId(),
+                templateData.getText()
         );
     }
 }
