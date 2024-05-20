@@ -11,7 +11,10 @@ public class ServiceTemplateApplication {
     public static void main(String[] args) {
         ApplicationContext applicationContext = SpringApplication.run(ServiceTemplateApplication.class, args);
         ClientClient templateTest = applicationContext.getBean(ClientClient.class);
+        System.out.println("Client stared");
         templateTest.findTemplate(1L);
+
+        throw new RuntimeException("Trada`f");
     }
 
 }
