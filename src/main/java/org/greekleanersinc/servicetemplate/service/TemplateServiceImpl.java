@@ -1,8 +1,6 @@
 package org.greekleanersinc.servicetemplate.service;
 
 import io.grpc.stub.StreamObserver;
-import lombok.extern.log4j.Log4j;
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.server.service.GrpcService;
 import org.greekleanersinc.servicetemplate.ServiceData;
@@ -13,7 +11,7 @@ import org.greekleanersinc.servicetemplate.model.TemplateData;
 import org.greekleanersinc.servicetemplate.repository.TemplateRepository;
 
 @GrpcService
-@Log4j2
+@Slf4j
 public class TemplateServiceImpl extends TemplateServiceGrpc.TemplateServiceImplBase {
     private final TemplateRepository templateRepository;
 
