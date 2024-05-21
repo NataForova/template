@@ -13,8 +13,5 @@ public class ServiceTemplateApplication {
         ClientClient templateTest = applicationContext.getBean(ClientClient.class);
         System.out.println("Client stared");
         templateTest.findTemplate(1L);
-
-        throw new RuntimeException("Trada`f");
     }
-
 }
