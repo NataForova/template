@@ -1,5 +1,6 @@
 package org.greekleanersinc.servicetemplate.service;
 
+import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.server.service.GrpcService;
@@ -25,13 +26,19 @@ public class TemplateGrpcServiceImpl extends TemplateServiceGrpc.TemplateService
         Long id = request.getId();
         log.info("Finding template by id: {}", id);
 
-        var template = templateRepository.findById(id);
-        Response response = Response
-                .newBuilder()
-                .setResponseData(convertToProto(template))
-                .build();
-        responseObserver.onNext(response);
-        responseObserver.onCompleted();
+        try {
+            TemplateData template = templateRepository.findById(id);
+            Response response = Response.newBuilder()
+                    .setResponseData(convertToProto(template))
+                    .build();
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        } catch (Exception e) {
+            responseObserver.onError(
+                    Status.NOT_FOUND.withDescription(e.getMessage()).asRuntimeException()
+            );
+        }
+
     }
 
     public static ServiceData convertToProto(TemplateData template) {
@@ -41,7 +48,7 @@ public class TemplateGrpcServiceImpl extends TemplateServiceGrpc.TemplateService
                 .build();
     }
 
-    public static TemplateData convertToPojo(TemplateData templateData) {
+    public static TemplateData convertToPojo(ServiceData templateData) {
         return new TemplateData(
                 templateData.getId(),
                 templateData.getText()
