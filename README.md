@@ -17,9 +17,4 @@ mvn clean install
 ```
 Override new methods in ```TemplateGrpcServiceImpl``` using ```TemplateRepository```
 
-If you want to have both grpc client and service in one application you can also customize ```TemplateGrpcClient ```.
-
-You can also use them separate, just create and copy this code in new project and leave only ```TemplateGrpcClient ```
-after building service project import ```org.greekleanersinc.servicetemplate.TemplateServiceGrpc```
-
 Don't forget replace template in source file name to your actually service name.
