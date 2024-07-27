@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class ClientClient {
+public class TemplateGrpcClient {
 
     @GrpcClient("grpc-server")
     private TemplateServiceGrpc.TemplateServiceBlockingStub templateServiceStub;
 
-    public ClientClient() {
+    public TemplateGrpcClient() {
     }
 
     public void findTemplate(Long id) {

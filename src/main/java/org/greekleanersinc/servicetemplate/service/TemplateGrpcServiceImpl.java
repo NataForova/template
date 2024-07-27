@@ -12,10 +12,10 @@ import org.greekleanersinc.servicetemplate.repository.TemplateRepository;
 
 @GrpcService
 @Slf4j
-public class TemplateServiceImpl extends TemplateServiceGrpc.TemplateServiceImplBase {
+public class TemplateGrpcServiceImpl extends TemplateServiceGrpc.TemplateServiceImplBase {
     private final TemplateRepository templateRepository;
 
-    public TemplateServiceImpl(TemplateRepository templateRepository) {
+    public TemplateGrpcServiceImpl(TemplateRepository templateRepository) {
         this.templateRepository = templateRepository;
     }
 

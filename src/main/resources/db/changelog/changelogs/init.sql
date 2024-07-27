@@ -1,5 +1,4 @@
----TODO create parameter for service name
-create table if not exists template (
+create table template (
     id integer not null primary key,
     text varchar(255)
 );
