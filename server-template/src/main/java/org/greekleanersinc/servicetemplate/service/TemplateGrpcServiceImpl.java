@@ -14,10 +14,10 @@ import org.greekleanersinc.servicetemplate.repository.TemplateRepository;
 @GrpcService
 @Slf4j
 public class TemplateGrpcServiceImpl extends TemplateServiceGrpc.TemplateServiceImplBase {
-    private final TemplateRepository templateRepository;
+    private final TemplateService templateService;
 
-    public TemplateGrpcServiceImpl(TemplateRepository templateRepository) {
-        this.templateRepository = templateRepository;
+    public TemplateGrpcServiceImpl(TemplateService templateService) {
+        this.templateService = templateService;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class TemplateGrpcServiceImpl extends TemplateServiceGrpc.TemplateService
         log.info("Finding template by id: {}", id);
 
         try {
-            TemplateData template = templateRepository.findById(id);
+            TemplateData template = templateService.findTemplateById(id);
             Response response = Response.newBuilder()
                     .setResponseData(convertToProto(template))
                     .build();

@@ -2,7 +2,7 @@ package org.greekleanersinc.servicetemplate.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.greekleanersinc.servicetemplate.exception.TemplateNotFoundException;
+import org.greekleanersinc.servicetemplate.exception.ResourceNotFoundException;
 import org.greekleanersinc.servicetemplate.model.TemplateData;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +14,7 @@ public class TemplateRepository {
     public TemplateData findById(Long id) {
         var templateData = entityManager.find(TemplateData.class, id);
         if (templateData == null) {
-            throw new TemplateNotFoundException(String.format("Template with id '%s' not found", id));
+            throw new ResourceNotFoundException(String.format("Template with id '%s' not found", id));
         }
         return templateData;
     }
