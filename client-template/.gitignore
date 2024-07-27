@@ -31,7 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-/local.env
-/client-template/.mvn/
-/server-template/.mvn/
-/logs/
