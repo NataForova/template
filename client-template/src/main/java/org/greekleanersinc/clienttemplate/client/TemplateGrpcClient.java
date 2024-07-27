@@ -11,9 +11,6 @@ public class TemplateGrpcClient {
     @GrpcClient("grpc-server")
     private TemplateServiceGrpc.TemplateServiceBlockingStub templateServiceStub;
 
-    public TemplateGrpcClient() {
-    }
-
     public Response findTemplate(Long id) {
         Request request = Request.newBuilder().setId(id)
                 .build();
