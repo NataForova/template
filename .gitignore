@@ -35,3 +35,5 @@ build/
 /client-template/.mvn/
 /server-template/.mvn/
 /logs/
+/service-template/.mvn/
+/log/
