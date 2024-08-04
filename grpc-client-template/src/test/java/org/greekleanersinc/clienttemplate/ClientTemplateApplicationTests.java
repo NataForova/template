@@ -15,8 +15,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.greekleanersinc.servicetemplate.service.TemplateGrpcServiceImpl.convertToPojo;
-import static org.greekleanersinc.servicetemplate.service.TemplateGrpcServiceImpl.convertToProto;
+import static org.greekleanersinc.TemplateConverter.convertToProto;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.when;
@@ -45,9 +44,8 @@ class ClientTemplateApplicationTests {
 
 		long templateId = 1L;
 		var expectedResponse = new TemplateData(templateId, "test");
-		var response = templateGrpcClient.findTemplate(templateId);
-		assertThat(response).isNotNull();
-		var actualResponse = convertToPojo(response.getResponseData());
+		var actualResponse = templateGrpcClient.findTemplateById(templateId);
+		assertThat(actualResponse).isNotNull();
 		assertThat(actualResponse).isEqualTo(expectedResponse);
 	}
 
@@ -57,7 +55,7 @@ class ClientTemplateApplicationTests {
 		when(templateServiceStub.findTemplate(argThat(request -> request.getId() == 2L)))
 				.thenThrow(new StatusRuntimeException(Status.NOT_FOUND));
 		try {
-			var response = templateGrpcClient.findTemplate(templateId);
+			var response = templateGrpcClient.findTemplateById(templateId);
 			fail();
 		} catch (StatusRuntimeException e) {
 			assertThat(e.getStatus().getCode()).isEqualTo(Status.Code.NOT_FOUND);

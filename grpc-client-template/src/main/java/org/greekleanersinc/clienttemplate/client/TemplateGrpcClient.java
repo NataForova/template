@@ -5,13 +5,12 @@ import org.greekleanersinc.communication.GrpcCommunicationInterface;
 import org.greekleanersinc.exception.ResourceNotFoundException;
 import org.greekleanersinc.model.BaseTemplateData;
 import org.greekleanersinc.servicetemplate.RequestById;
-import org.greekleanersinc.servicetemplate.Response;
-import org.greekleanersinc.servicetemplate.ServiceData;
 import org.greekleanersinc.servicetemplate.TemplateServiceGrpc;
-import org.greekleanersinc.servicetemplate.model.TemplateData;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static org.greekleanersinc.TemplateConverter.convertToPojo;
 
 @Service
 public class TemplateGrpcClient implements GrpcCommunicationInterface {
@@ -44,20 +43,5 @@ public class TemplateGrpcClient implements GrpcCommunicationInterface {
     @Override
     public void deleteById(Long id) throws ResourceNotFoundException {
 
-    }
-
-    //TODO move convertors to grpc module
-    public static ServiceData convertToProto(TemplateData template) {
-        return ServiceData.newBuilder()
-                .setId(template.getId())
-                .setText(template.getText())
-                .build();
-    }
-
-    public static TemplateData convertToPojo(ServiceData templateData) {
-        return new TemplateData(
-                templateData.getId(),
-                templateData.getText()
-        );
     }
 }

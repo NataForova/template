@@ -14,10 +14,7 @@
 	<description>service-template</description>
 	<properties>
 		<java.version>21</java.version>
-		<os.detected.classifier>osx-aarch_64</os.detected.classifier>
-		<grpc.version>1.53.0</grpc.version>
 		<liquibase.version>4.26.0</liquibase.version>
-		<javax.version>1.3.2</javax.version>
 		<spring.version>3.2.5</spring.version>
 		<lombok.version>1.18.34</lombok.version>
 
@@ -44,36 +41,13 @@
 			<version>42.7.3</version>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<version>${spring.version}</version>
-			<scope>test</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>org.greekleanersinc</groupId>
 			<artifactId>communication-interface</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-testcontainers</artifactId>
-			<version>${spring.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.testcontainers</groupId>
-			<artifactId>junit-jupiter</artifactId>
-			<version>1.19.8</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.testcontainers</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>1.19.8</version>
-			<scope>test</scope>
-		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -81,35 +55,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.xolstice.maven.plugins</groupId>
-				<artifactId>protobuf-maven-plugin</artifactId>
-				<version>0.6.1</version>
-				<configuration>
-					<protocArtifact>
-						com.google.protobuf:protoc:3.24.4:exe:${os.detected.classifier}
-					</protocArtifact>
-					<pluginId>grpc-java</pluginId>
-					<pluginArtifact>
-						io.grpc:protoc-gen-grpc-java:1.43.3:exe:${os.detected.classifier}
-					</pluginArtifact>
-					<protoSourceRoot>src/main/resources</protoSourceRoot>
-				</configuration>
-				<executions>
-					<execution>
-						<id>client-code-generation</id>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>server-code-generation</id>
-						<goals>
-							<goal>compile-custom</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>

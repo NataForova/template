@@ -5,6 +5,7 @@ import jakarta.persistence.PersistenceContext;
 import org.greekleanersinc.exception.ResourceNotFoundException;
 import org.greekleanersinc.servicetemplate.model.TemplateData;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -29,19 +30,23 @@ public class TemplateRepository {
         return templateDataList;
     }
 
+    @Transactional
     public TemplateData save(TemplateData template) {
         return entityManager.merge(template);
     }
 
+    @Transactional
     public void deleteById(Long id) {
         TemplateData template = findById(id);
         delete(template);
     }
 
+    @Transactional
     public void delete(TemplateData template) {
         entityManager.remove(template);
     }
 
+    @Transactional
     public TemplateData update(TemplateData template) {
         return entityManager.merge(template);
     }

@@ -30,12 +30,12 @@ public class TemplateService implements GrpcCommunicationInterface {
 
     @Override
     public TemplateData createTemplate(BaseTemplateData baseTemplateData) {
-        return templateRepository.save((TemplateData) baseTemplateData);
+        return templateRepository.save(new TemplateData(baseTemplateData.getId(), baseTemplateData.getText()));
     }
 
     @Override
     public TemplateData updateTemplate(BaseTemplateData baseTemplateData) throws ResourceNotFoundException {
-        return templateRepository.update((TemplateData)baseTemplateData);
+        return templateRepository.update(new TemplateData(baseTemplateData.getId(), baseTemplateData.getText()));
     }
 
     @Override
