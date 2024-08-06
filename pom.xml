@@ -10,10 +10,10 @@
       
   <modules>
             
-    <module>service-template</module>
+    <module>base-service</module>
     <module>grpc-client</module>
     <module>communication-interface</module>
-    <module>grpc-server-template</module>
+    <module>grpc-server</module>
 
   </modules>
 

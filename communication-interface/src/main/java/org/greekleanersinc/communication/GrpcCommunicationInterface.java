@@ -1,16 +1,16 @@
 package org.greekleanersinc.communication;
 
 import org.greekleanersinc.exception.ResourceNotFoundException;
-import org.greekleanersinc.model.BaseTemplateData;
+import org.greekleanersinc.model.BaseData;
 
 import java.util.List;
 
 public interface GrpcCommunicationInterface {
 
-    BaseTemplateData findTemplateById(Long id) throws ResourceNotFoundException;
-    List<BaseTemplateData> findAllTemplates();
-    BaseTemplateData createTemplate(BaseTemplateData baseTemplateData);
-    BaseTemplateData updateTemplate(BaseTemplateData baseTemplateData) throws ResourceNotFoundException;
+    BaseData findDataById(Long id) throws ResourceNotFoundException;
+    List<BaseData> findAllData();
+    BaseData createData(BaseData baseData);
+    BaseData updateData(BaseData baseData) throws ResourceNotFoundException;
     void deleteById(Long id) throws ResourceNotFoundException;
 
 }
