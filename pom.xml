@@ -3,7 +3,7 @@
       
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.greekleanersinc</groupId>
-  <artifactId>template</artifactId>
+  <artifactId>grpc-archetype</artifactId>
       
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -16,5 +16,29 @@
     <module>grpc-server-template</module>
 
   </modules>
+
+  <profiles>
+    <profile>
+      <id>create-archetype</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-archetype-plugin</artifactId>
+            <version>3.2.0</version>
+            <executions>
+              <execution>
+                <id>default-create-from-project</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>create-from-project</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
   
 </project>

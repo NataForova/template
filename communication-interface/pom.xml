@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.greekleanersinc</groupId>
-        <artifactId>template</artifactId>
+        <artifactId>grpc-archetype</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
