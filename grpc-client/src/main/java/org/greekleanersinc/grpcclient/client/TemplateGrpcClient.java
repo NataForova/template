@@ -1,4 +1,4 @@
-package org.greekleanersinc.clienttemplate.client;
+package org.greekleanersinc.grpcclient.client;
 
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.greekleanersinc.communication.GrpcCommunicationInterface;

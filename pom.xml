@@ -11,7 +11,7 @@
   <modules>
             
     <module>service-template</module>
-    <module>grpc-client-template</module>
+    <module>grpc-client</module>
     <module>communication-interface</module>
     <module>grpc-server-template</module>
 
