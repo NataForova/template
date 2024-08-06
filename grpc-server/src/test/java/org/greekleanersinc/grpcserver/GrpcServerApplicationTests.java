@@ -52,7 +52,7 @@ class GrpcServerApplicationTests {
             fail();
         } catch (StatusRuntimeException e) {
             assertThat(e.getStatus().getCode()).isEqualTo(Status.Code.NOT_FOUND);
-            assertThat(e.getMessage()).isEqualTo(String.format("NOT_FOUND: Template with id '%s' not found", exampleId));
+            assertThat(e.getMessage()).isEqualTo(String.format("NOT_FOUND: Example with id '%s' not found", exampleId));
         }
     }
 
@@ -92,7 +92,7 @@ class GrpcServerApplicationTests {
             fail();
         } catch (StatusRuntimeException e) {
             assertThat(e.getStatus().getCode()).isEqualTo(Status.Code.NOT_FOUND);
-            assertThat(e.getMessage()).isEqualTo(String.format("NOT_FOUND: Template with id '%s' not found", exampleId));
+            assertThat(e.getMessage()).isEqualTo(String.format("NOT_FOUND: Example with id '%s' not found", exampleId));
         }
     }
 }
