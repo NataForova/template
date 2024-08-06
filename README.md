@@ -1,12 +1,6 @@
 # template service
 Γεια σας και πάλι
 
-For host grpc server add
-```
-127.0.0.1 grpc-server-test 
-```
-to /etc/hosts
-
 Follow next steps for creating grpc-archetype from this project:
 ```
 1. mvn clean install
@@ -52,3 +46,8 @@ mvn archetype:generate \
 ```
 
 
+For host grpc server add
+```
+127.0.0.1 grpc-server-test 
+```
+to /etc/hosts
