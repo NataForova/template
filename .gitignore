@@ -37,3 +37,4 @@ build/
 /logs/
 /service-template/.mvn/
 /log/
+/grpc-server-template/logs/
