@@ -2,8 +2,9 @@ package org.greekleanersinc.grpcclient.client;
 
 import org.greekleanersinc.communication.GrpcCommunicationInterface;
 import org.greekleanersinc.exception.ResourceNotFoundException;
-import org.greekleanersinc.grpcserver.DataServiceGrpc;
-import org.greekleanersinc.grpcserver.RequestById;
+import org.greekleanersinc.grpcdataservice.DataServiceGrpc;
+
+import org.greekleanersinc.grpcdataservice.RequestById;
 import org.greekleanersinc.model.BaseData;
 
 import org.springframework.stereotype.Service;

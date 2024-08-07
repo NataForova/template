@@ -9,12 +9,11 @@
   <packaging>pom</packaging>
       
   <modules>
-            
-    <module>base-service</module>
-    <module>grpc-client</module>
     <module>communication-interface</module>
+    <module>base-service</module>
+    <module>grpc-data-service</module>
     <module>grpc-server</module>
-
+    <module>grpc-client</module>
   </modules>
 
   <profiles>

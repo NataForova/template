@@ -1,7 +1,7 @@
 package org.greekleanersinc.grpcserver.service;
 
 import org.greekleanersinc.baseservice.model.Example;
-import org.greekleanersinc.grpcserver.ServiceData;
+import org.greekleanersinc.grpcdataservice.ServiceData;
 
 public class DataConverter {
     public static ServiceData convertToProto(Example template) {

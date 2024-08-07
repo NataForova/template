@@ -3,12 +3,12 @@
 
 Follow next steps for creating grpc-archetype from this project:
 ```
-1. mvn clean install
+ mvn clean install
 ```
 run archetype creating command
 
 ```
-2. mvn clean install -Pcreate-archetype
+ mvn clean install -Pcreate-archetype
 ```
 
 Your archetype project is ready and located in ```target/generated-sources/archetype```
@@ -17,17 +17,22 @@ It is possible to copy archetype project in individual repository or create new 
 
 Before creating new project from archetype add your modules structure to root pom.xml ```(target/generated-sources/archetype/src/main/resources/archetype-resources/pom.xml)```
 
+
 For this project structure 
 ```
  <modules>
-            
+    <module>communication-interface</module>        
     <module>base-service</module>
-    <module>grpc-client</module>
-    <module>communication-interface</module>
     <module>grpc-server</module>
-
+    <module>grpc-client</module>
   </modules>
   
+```
+
+Build archetype 
+
+```
+mvn clean install
 ```
 
 for generate new project use
@@ -41,7 +46,7 @@ mvn archetype:generate \
   -DarchetypeVersion=0.0.1-SNAPSHOT \
   -DgroupId=org.greekleanersinc \
   -DartifactId=test-project \
-  -Dversion=1.0-SNAPSHOT \
+  -Dversion=0.0.1-SNAPSHOT \
   -DinteractiveMode=false
 ```
 

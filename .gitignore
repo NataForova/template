@@ -38,3 +38,4 @@ build/
 /service-template/.mvn/
 /log/
 /grpc-server-template/logs/
+/grpc-server/logs/
