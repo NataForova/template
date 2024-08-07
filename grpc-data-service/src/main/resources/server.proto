@@ -1,0 +1,30 @@
+syntax = "proto3";
+option java_multiple_files = true;
+
+package org.greekleanersinc.grpcdataservice;
+import "google/protobuf/empty.proto";
+
+message RequestById {
+  uint64 id = 1;
+}
+message RequestCreate {
+  uint64 id = 1;
+  string text = 2;
+}
+message ServiceData {
+  uint64 id = 1;
+  string text = 2;
+}
+
+message Response {
+  ServiceData responseData = 1;
+}
+
+service DataService {
+  rpc findData(RequestById) returns (Response);
+  rpc findAll(google.protobuf.Empty) returns (stream Response);
+  rpc createData(RequestCreate) returns (Response);
+  rpc updateData(RequestCreate) returns (Response);
+  rpc delete(RequestById) returns (google.protobuf.Empty);
+
+}
